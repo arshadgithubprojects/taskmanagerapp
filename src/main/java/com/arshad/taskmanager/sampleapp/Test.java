@@ -1,13 +1,17 @@
 package com.arshad.taskmanager.sampleapp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.io.IOException;
 
 public class Test {
 
     public static void main(String[] args) {
         String jsonResponse = "{ \"id\": 1, \"name\": \"John\", \"age\": 30 }";
-
+        System.out.println(jsonResponse);
         ObjectMapper mapper = new ObjectMapper();
 
         try {
@@ -16,43 +20,18 @@ public class Test {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println(Thread.activeCount());
+        System.out.println(Runtime.getRuntime().availableProcessors());
     }
 }
 
 // User.java
+@Setter
+@Getter
+@ToString
 class User {
     private int id;
     private String name;
     private int age;
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    // Getters and Setters
-    // toString() for easy printing
-    @Override
-    public String toString(){
-        return id + " and " + name + " and " + age;
-    }
 }
